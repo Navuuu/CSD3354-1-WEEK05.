@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FRI_FEB_8
+namespace Week5
 {
     class Program
     {

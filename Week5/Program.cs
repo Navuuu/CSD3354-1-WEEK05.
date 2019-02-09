@@ -45,8 +45,16 @@ namespace Week5
                 ThirdFloor.FloorNumber = "Third Floor";
                 ThirdFloor.elevatorUp = ThirdFloor;
                 FourthFloor.FloorNumber = "Fourth Floor";
-                FourthFloor.elevatorUp = FourthFloor;
+                FourthFloor.elevatorUp = null;
 
+            }
+
+            public void traverseList()
+            {
+                while(true)
+                {
+
+                }
             }
         }
     }

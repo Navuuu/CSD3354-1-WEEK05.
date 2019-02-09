@@ -1,129 +1,298 @@
 ﻿using System;
 
-namespace Week5
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //Elevator e = new Elevator();
-            //e.setup();
-            //e.TraverseList();
+using System.Collections.Generic;
 
-            BubbleSort b = new BubbleSort();
-            b.run();
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+
+
+namespace Week5
+
+{
+
+    class Program
+
+    {
+
+        static void Main(string[] args)
+
+        {
+
+            BubbleWSort bs = new BubbleWSort();
+
+
+
+            bs.run();
+
+
+
             Console.ReadLine();
+
         }
+
     }
 
     class Node
+
     {
+
         public Node() { }
+
+        public Node floor;
+
         public Node elevatorUp;
+
         public string FloorNumber;
+
     }
 
+
+
     class Department
+
     {
+
         public Department(string dept_name)
+
+
+
         {
+
+
+
             DepartmentDescription = dept_name;
+
+
+
         }
+
         public Department nextDepartment;
-        public Department previousDepartment;
-        public string DepartmentDescription;
+
+        public Department aDepartment;
+
+        string DepartmentDescription;
+
     }
 
     class DepartmentStore
+
     {
+
         public void InitializeDepartments()
+
         {
-            Department Books = new Department("Books");
+
             Department Kitchenware = new Department("Kitchenware");
 
-            // Kitchenware.nextDepartment = Books;
-            // Kitchenware.previousDepartment = FirstFloor;
-            //Department Books = new Department("Books");
+            Department Books = new Department("Books");
+
+            Kitchenware.nextDepartment = Books;
+
+            //Kitchenware.previousDepartment = FirstFloor;
+
+
 
         }
 
     }
 
-    class Elevator
+    class elevator
     {
-        public static Node Head;
-        public static Node FirstFloor;
-        public static Node SecondFloor;
-        public static Node ThirdFloor;
-        public static Node FourthFloor;
 
-        public void setup()
+
+
+        Node Head;
+
+        Node FirstFloor;
+
+        Node SecondFloor;
+
+        Node ThirdFloor;
+
+        Node FourthFloor;
+
+
+
+        public void run()
+
         {
+
             FirstFloor = new Node();
-            SecondFloor = new Node();
-            ThirdFloor = new Node();
-            FourthFloor = new Node();
-            Head = FirstFloor;
+
             FirstFloor.FloorNumber = "First Floor";
+
+            Console.WriteLine("floor number is {0} ", FirstFloor.FloorNumber);
+
+
+
+            SecondFloor = new Node();
+
             FirstFloor.elevatorUp = SecondFloor;
+
             SecondFloor.FloorNumber = "Second Floor";
+
+            Console.WriteLine("floor number is {0} ", SecondFloor.FloorNumber);
+
+
+
+            ThirdFloor = new Node();
+
             SecondFloor.elevatorUp = ThirdFloor;
+
             ThirdFloor.FloorNumber = "Third Floor";
+
+            Console.WriteLine("floor number is {0} ", ThirdFloor.FloorNumber);
+
+
+
+            FourthFloor = new Node();
+
             ThirdFloor.elevatorUp = FourthFloor;
+
             FourthFloor.FloorNumber = "Fourth Floor";
+
+            Console.WriteLine("floor number is {0} ", FourthFloor.FloorNumber);
+
             FourthFloor.elevatorUp = null;
+
         }
 
-        public void TraverseList()
-        {
-            Node temp;
-            temp = Head;
 
-            // where am I going to start?
+
+        public void traverseList()
+
+        {
+
+            Node temp;
+
+            temp = Head.elevatorUp;
+
+            // Where am I going to Start?
+
+            Console.WriteLine("The first floor is " + Head.FloorNumber);
 
             while (temp != null)
+
             {
-                Console.WriteLine(temp.FloorNumber);
+
+                // NOW GET TO THE SECOND FLOOR!!!
+
                 temp = temp.elevatorUp;
 
+                Console.WriteLine(temp.FloorNumber);
+
             }
 
         }
+
     }
 
-    class BubbleSort
+    class BubbleWSort
+
     {
+
+
+
         public void run()
+
+
+
         {
-            int[] array = new int[5] { 9, 11, 3, 5, 17 };
-            int temp;
 
 
-            for (int i = 0; i < array.Length; i++)
+
+            int[] ar = new int[5] { 4, 5, 6, 2, 3 };
+
+
+
+            int mid = 0, temp = 0;
+
+
+
+
+
+
+
+            for (int i = 0; i < ar.Length; i++)
+
+
+
             {
-                for (int j = 0; j < array.Length - 1; j++)
+
+
+
+
+
+
+
+                for (int j = 0; j < ar.Length - 1; j++)
+
+
+
                 {
+
+
+
                     temp = 0;
-                    if (array[j] > array[j + 1])
+
+
+
+                    if (ar[j] > ar[j + 1])
+
+
+
                     {
-                        temp = array[j];
-                        array[i] = array[j + 1];
-                        array[j + 1] = temp;
+
+
+
+                        temp = ar[j + 1];
+
+
+
+                        ar[j + 1] = ar[j];
+
+
+
+                        ar[j] = temp;
+
+
+
                     }
 
+
+
                 }
+
+
+
+
+
+
+
             }
-            for (int i = 0; i < array.Length; i++)
+
+
+
+            for (int i = 0; i < ar.Length; i++)
+
+
+
             {
-                Console.WriteLine(array[i]);
+
+
+
+                Console.Write("{0} ", ar[i]);
+
+
+
             }
-            // Console.WriteLine("the i-th value is {0} ", array[i]);
 
         }
 
-
-        // Console.WriteLine("C'est Fini");
-
-
     }
+
 }

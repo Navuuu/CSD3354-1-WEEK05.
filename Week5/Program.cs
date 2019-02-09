@@ -30,12 +30,23 @@ namespace Week5
 
             public void run()
             {
+
+
                 FirstFloor = new Node();
+                SecondFloor =new Node();
+                ThirdFloor =new Node();
+                FourthFloor =new Node();
+
+
                 FirstFloor.FloorNumber = "First Floor";
-                Console.WriteLine("floor number is {0}", FirstFloor.FloorNumber);
                 FirstFloor.elevatorUp = SecondFloor;
                 SecondFloor.FloorNumber = "Second Floor";
-                Console.WriteLine("floor number is {0}", SecondFloor.FloorNumber);
+                SecondFloor.elevatorUp = SecondFloor;
+                ThirdFloor.FloorNumber = "Third Floor";
+                ThirdFloor.elevatorUp = ThirdFloor;
+                FourthFloor.FloorNumber = "Fourth Floor";
+                FourthFloor.elevatorUp = FourthFloor;
+
             }
         }
     }

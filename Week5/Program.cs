@@ -6,9 +6,13 @@ namespace Week5
     {
         static void Main(string[] args)
         {
-            Elevator e = new Elevator();
-            e.setup();
-            e.TraverseList();
+            //Elevator e = new Elevator();
+            //e.setup();
+            //e.TraverseList();
+
+            BubbleSort b = new BubbleSort();
+            b.run();
+            Console.ReadLine();
         }
     }
 
@@ -21,17 +25,37 @@ namespace Week5
 
     class Department
     {
-        public Department aDepartment;
+        public Department(string dept_name)
+        {
+            DepartmentDescription = dept_name;
+        }
+        public Department nextDepartment;
+        public Department previousDepartment;
+        public string DepartmentDescription;
+    }
+
+    class DepartmentStore
+    {
+        public void InitializeDepartments()
+        {
+            Department Books = new Department("Books");
+            Department Kitchenware = new Department("Kitchenware");
+
+            // Kitchenware.nextDepartment = Books;
+            // Kitchenware.previousDepartment = FirstFloor;
+            //Department Books = new Department("Books");
+
+        }
 
     }
 
     class Elevator
     {
-        Node Head;
-        Node FirstFloor;
-        Node SecondFloor;
-        Node ThirdFloor;
-        Node FourthFloor;
+        public static Node Head;
+        public static Node FirstFloor;
+        public static Node SecondFloor;
+        public static Node ThirdFloor;
+        public static Node FourthFloor;
 
         public void setup()
         {
@@ -65,5 +89,41 @@ namespace Week5
             }
 
         }
+    }
+
+    class BubbleSort
+    {
+        public void run()
+        {
+            int[] array = new int[5] { 9, 11, 3, 5, 17 };
+            int temp;
+
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length - 1; j++)
+                {
+                    temp = 0;
+                    if (array[j] > array[j + 1])
+                    {
+                        temp = array[j];
+                        array[i] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+
+                }
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
+            // Console.WriteLine("the i-th value is {0} ", array[i]);
+
+        }
+
+
+        // Console.WriteLine("C'est Fini");
+
+
     }
 }
